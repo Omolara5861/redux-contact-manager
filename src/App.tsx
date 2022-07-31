@@ -7,12 +7,15 @@ import Contacts from './components/contacts/Contacts';
 import EditContact from './components/contacts/EditContact';
 import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
-import Test from './components/test/Test';
 import AddContact_Ref from './components/contacts/AddContact_Ref';
+import {Provider} from 'react-redux';
+import store from './store';
+
 
 
 function App() {
   return (
+  <Provider store={store}>
 <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
      <Header branding="Contact Manager"/>
@@ -22,12 +25,12 @@ function App() {
         <Route path="/contact/add"  component={AddContact_Ref} />
         <Route path="/contact/edit/:id" component={EditContact} />
         <Route path="/about" component={About} />
-        <Route path="/test" component={Test} />
         <Route component={NotFound} />
       </Switch>
      </div>
     </div>
     </Router>
+    </Provider>
   );
 }
 
